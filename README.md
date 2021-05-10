@@ -2,6 +2,8 @@
 
 ## Introduction
 
+Google cloud IoT is a fully managed service that provides secure connection to the devices and management. IoT Core, in combination with other services, such as Cloud Storage, Dataflow, Pub/Sub, BigQuery, will provide a complete solution for reading, streaming, analysing and visualization of data. In this project, we are going to build a data pipeline that reads heart rate from IoT device, publishes the data to google pub/sub subscription and saves it to BigQuery table. For this process, we used raspberry pi kit connected to a heart rate sensor and google cloud platform services (IoT Core, Cloud Storage, DataFlow, BigQuery and Pub/Sub). We can follow the below process to setup the google cloud, raspberry pi kit, generate and visualize the heart rate data.
+
 ## Hardware/Software Requirements
 * Raspberry Pi kit
 * 8GB SD memory card with usb card reader
@@ -98,7 +100,7 @@ Data can be read from the BigQuery table and visualized using Google Sheets.
 ```
 SELECT * FROM `it432-iot-heartrate.heartratedata.heartRateDataTable`
 ```
-<img width="471" alt="Screen Shot 2021-05-06 at 2 13 01 PM" src="https://user-images.githubusercontent.com/81333454/117594193-2d6bf480-b103-11eb-8f84-6488256e3cb2.png">
+<img width="350" alt="Screen Shot 2021-05-06 at 2 13 01 PM" src="https://user-images.githubusercontent.com/81333454/117594193-2d6bf480-b103-11eb-8f84-6488256e3cb2.png">
 
 **Step 3:** Export/save the table records into google sheets. Click "save results" and select "google sheets" from the drop down list.
 
@@ -111,7 +113,7 @@ SELECT * FROM `it432-iot-heartrate.heartratedata.heartRateDataTable`
 
 ## References
 
-[Using IoT Core to Stream Heart Rate Data](https://codelabs.developers.google.com/codelabs/iotcore-heartrate#8)
+[Using IoT Core to Stream Heart Rate Data](https://codelabs.developers.google.com/codelabs/iotcore-heartrate#0)
 
 [Creating public/private key pairs](https://cloud.google.com/iot/docs/how-tos/credentials/keys)
 
@@ -124,6 +126,5 @@ SELECT * FROM `it432-iot-heartrate.heartratedata.heartRateDataTable`
 
 ## Summary
 
-
-
+This report gives an idea of how heart rate can be captured and published to google cloud platform using raspberry pi. We successfully created the required project with IoT core registry device which will be useful to establish connection to the raspberry pi kit. We also created the pub/sub subscription which will be used to publish heart rate data. And finally we created the dataflow job which is responsible for reading the data from the subscription and saving the data to big query table. We exported the data to google sheets and generated a chart to visualize the heart rate data. 
 
