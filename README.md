@@ -35,9 +35,13 @@
 
 * Insert memory card into the computer/laptop. Format and install the "raspberry pi OS" into the SD card using "raspberry pi imager". The process will take around 15 minutes until it successfully writes and verifies OS. During this process, configure the ssh and WiFi connection details.
 
+![Picture1](https://user-images.githubusercontent.com/81333454/117594653-34473700-b104-11eb-9aa2-fb5045a97f89.png)
+
 * To install raspberry pi OS image, follow the steps in the link [Install raspberry pi OS](https://www.raspberrypi.org/documentation/installation/installing-images/README.md)
 
-* After installation, insert the SD card into the raspberry pi kit and switch on the device. Red light will be seen when the system is fully functional.
+* After installation, insert the SD card into the raspberry pi kit, connect the heart rate sensor and switch on the device. Red light will be seen when the system is fully functional.
+
+![Picture2](https://user-images.githubusercontent.com/81333454/117594800-825c3a80-b104-11eb-9252-7be38427dc7d.png)
 
 * After the raspberry pi kit boots up, connect to the kit using ssh or putty.
 
@@ -80,8 +84,8 @@
 
 * Data will be transmitted and published to the pub/sub subscription on the google cloud
 
+![Screen Shot 2021-05-06 at 1 59 53 PM](https://user-images.githubusercontent.com/81333454/117594331-86d42380-b103-11eb-983a-e1b490ee315a.jpg)
 
-  
 
 ## Reading and Visualizing data
 
@@ -94,6 +98,7 @@ Data can be read from the BigQuery table and visualized using Google Sheets.
 ```
 SELECT * FROM `it432-iot-heartrate.heartratedata.heartRateDataTable`
 ```
+<img width="471" alt="Screen Shot 2021-05-06 at 2 13 01 PM" src="https://user-images.githubusercontent.com/81333454/117594193-2d6bf480-b103-11eb-8f84-6488256e3cb2.png">
 
 **Step 3:** Export/save the table records into google sheets. Click "save results" and select "google sheets" from the drop down list.
 
@@ -101,6 +106,7 @@ SELECT * FROM `it432-iot-heartrate.heartratedata.heartRateDataTable`
 
 **Step 5:** Then go to the "Insert" menu, click on the "chart" option to convert the data into charts.
 
+<img width="819" alt="Screen Shot 2021-05-06 at 2 14 29 PM" src="https://user-images.githubusercontent.com/81333454/117594090-0e6d6280-b103-11eb-9497-0218f6d6c4aa.png">
 
 
 ## References
