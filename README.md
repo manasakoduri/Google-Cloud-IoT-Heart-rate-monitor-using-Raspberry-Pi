@@ -33,41 +33,53 @@
 
 ## Raspberry Pi Setup
 
-**Step 1:** Insert memory card into the computer/laptop. Install the "raspberry pi OS" into the SD card. Use raspberry pi imager to format and install OS. SD card must be formatted properly in order to boot the OS image. During this process, configure the ssh and WiFi connection details. The process will take around 15 minutes until it successfully writes and verifies OS. 
+* Insert memory card into the computer/laptop. Format and install the "raspberry pi OS" into the SD card using "raspberry pi imager". The process will take around 15 minutes until it successfully writes and verifies OS. During this process, configure the ssh and WiFi connection details.
 
-Follow the steps in the link [Install raspberry pi OS](https://www.raspberrypi.org/documentation/installation/installing-images/README.md)
+* To install raspberry pi OS image, follow the steps in the link [Install raspberry pi OS](https://www.raspberrypi.org/documentation/installation/installing-images/README.md)
 
+* After installation, insert the SD card into the raspberry pi kit and switch on the device. Red light will be seen when the system is fully functional.
 
-Once the image is installed on the sd card, enable the headless connection by creating a file in the boot folder.
+* After the raspberry pi kit boots up, connect to the kit using ssh or putty.
 
-Insert the SD card into the raspberry kit and switch on the device. Red light will be seen when the system is fully functional.
+* Verify the raspberry pi connection using ssh via putty or terminal. 
 
-Connect the raspberry kit to a monitor and a heart rate sensor. 
-After the raspberry pi kit boots up, connect to the kit using ssh or putty.
-
-Verify the raspberry pi connection using ssh via putty or terminal. Below are the commands to verify the headless connection.
-
+* Below is the command to verify the headless connection:
+  ```
   ssh pi@raspberrypi.local
-  
-  and enter password when prompted.
-* Clone heart rate receiver program on to the raspberry pi using below commands
+  ```
+ * When prompted, enter the password "raspberry"
 
-  git clone https://github.com/googlecodelabs/iotcore-heartrate
-  
-  cd iotcore-heartrate
+ ### Install heart rate monitor software
+ 
+ The software on the raspberry pi should be up to date.
+ Use the below commands to update and install git and heart rate monitor programs
+ ```
+ sudo apt-get update
+ sudo apt-get install git
+ 
+ git clone https://github.com/googlecodelabs/iotcore-heartrate
+ cd iotcore-heartrate
+ ```
   
   ## Monitoring Heart rate
   
 * Connect to the raspberry pi using the ssh terminal as per the steps provided in the "Raspberry Pi Setup" section above.
-* Navigate to the directory of the heart rate program using below command
 
+* Navigate to the directory of the heart rate program using below command
+  ```
   cd /home/pi/iotcore-heartrate
-  
-* Start the heart rate script using below command. Project id, registry id and device id must match with the google cloud setup.
-  
+  ```
+* Start the heart rate script using below command. 
+  Project id, registry id and device id must match with the google cloud setup.
+  ```
   python checkHeartRate.py --project_id=myproject --registry_id=myregistry --device_id=mydevice
-  
+  ```
 * Terminal will show the echo messages which shows collecting heart rate data and making subscription. 
+
+* Now provide heart rate by holding the heart rate sensor.
+
+* Data will be transmitted and published to the pub/sub subscription on the google cloud
+
 
   
 
@@ -77,19 +89,32 @@ Data can be read from the BigQuery table and visualized using Google Sheets.
 
 **Step 1:** Verify the heart rate data by accessing [BigQuery](https://console.cloud.google.com/bigquery?utm_source=bqui&utm_medium=link&utm_campaign=classic&project=rare-disk-306423&ws=!1m0)
 
-**Step 2:** Navigate to BigQuery and query the table to see the recorded data.
+**Step 2:** Navigate to BigQuery and query the table to see the recorded data using below query.
 
-**Step 3:** Export/save the table records into google sheets.
+```
+SELECT * FROM `it432-iot-heartrate.heartratedata.heartRateDataTable`
+```
 
-**Step 4:** Go to the "Insert" menu and insert the charts, to convert the data into charts.
+**Step 3:** Export/save the table records into google sheets. Click "save results" and select "google sheets" from the drop down list.
+
+**Step 4:** Open this sheet on the google sheets account. Select the "time collected" and "heart rate" columns.
+
+**Step 5:** Then go to the "Insert" menu, click on the "chart" option to convert the data into charts.
+
+
 
 ## References
 
-https://codelabs.developers.google.com/codelabs/iotcore-heartrate#8
-https://cloud.google.com/iot/docs/how-tos/credentials/keys
-https://www.raspberrypi.org/documentation/configuration/wireless/headless.md
-https://www.raspberrypi.org/documentation/installation/installing-images/README.md
-https://www.raspberrypi.org/documentation/remote-access/ssh/README.md
+[Using IoT Core to Stream Heart Rate Data](https://codelabs.developers.google.com/codelabs/iotcore-heartrate#8)
+
+[Creating public/private key pairs](https://cloud.google.com/iot/docs/how-tos/credentials/keys)
+
+[Setting up a Raspberry Pi headless](https://www.raspberrypi.org/documentation/configuration/wireless/headless.md)
+
+[Installing operating system images](https://www.raspberrypi.org/documentation/installation/installing-images/README.md)
+
+[SSH (Secure Shell)](https://www.raspberrypi.org/documentation/remote-access/ssh/README.md)
+
 
 ## Summary
 
