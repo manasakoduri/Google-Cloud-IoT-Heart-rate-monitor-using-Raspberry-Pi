@@ -1,5 +1,7 @@
 # Google-Cloud-IoT-Heart-rate-monitor-using-Raspberry-Pi
 
+## Introduction
+
 ## Hardware/Software Requirements
 * Raspberry Pi kit
 * 8GB SD memory card with usb card reader
@@ -29,7 +31,7 @@
 **Step 9:** Create an IoT core registry and add a device to the registry. Then generate the public key in ES256 format. For device authentication, either choose upload and upload the key from the computer, or choose manual and copy/paste the key from the key file to the the public key box.
 
 
-##Raspberry Pi Setup
+## Raspberry Pi Setup
 
 **Step 1:** Insert memory card into the computer/laptop. Install the "raspberry pi OS" into the SD card. Use raspberry pi imager to format and install OS. SD card must be formatted properly in order to boot the OS image. During this process, configure the ssh and WiFi connection details. The process will take around 15 minutes until it successfully writes and verifies OS. 
 
@@ -53,5 +55,44 @@ Verify the raspberry pi connection using ssh via putty or terminal. Below are th
   git clone https://github.com/googlecodelabs/iotcore-heartrate
   
   cd iotcore-heartrate
+  
+  ## Monitoring Heart rate
+  
+* Connect to the raspberry pi using the ssh terminal as per the steps provided in the "Raspberry Pi Setup" section above.
+* Navigate to the directory of the heart rate program using below command
+
+  cd /home/pi/iotcore-heartrate
+  
+* Start the heart rate script using below command. Project id, registry id and device id must match with the google cloud setup.
+  
+  python checkHeartRate.py --project_id=myproject --registry_id=myregistry --device_id=mydevice
+  
+* Terminal will show the echo messages which shows collecting heart rate data and making subscription. 
+
+  
+
+## Reading and Visualizing data
+
+Data can be read from the BigQuery table and visualized using Google Sheets.
+
+**Step 1:** Verify the heart rate data by accessing [BigQuery](https://console.cloud.google.com/bigquery?utm_source=bqui&utm_medium=link&utm_campaign=classic&project=rare-disk-306423&ws=!1m0)
+
+**Step 2:** Navigate to BigQuery and query the table to see the recorded data.
+
+**Step 3:** Export/save the table records into google sheets.
+
+**Step 4:** Go to the "Insert" menu and insert the charts, to convert the data into charts.
+
+## References
+
+https://codelabs.developers.google.com/codelabs/iotcore-heartrate#8
+https://cloud.google.com/iot/docs/how-tos/credentials/keys
+https://www.raspberrypi.org/documentation/configuration/wireless/headless.md
+https://www.raspberrypi.org/documentation/installation/installing-images/README.md
+https://www.raspberrypi.org/documentation/remote-access/ssh/README.md
+
+## Summary
+
+
 
 
